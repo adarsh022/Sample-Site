@@ -276,13 +276,35 @@ body,html{
 	color: rgb(209,208,207);
 }
 
+/*-------------------------------------------------------------*/
+
 .carousel-cell {
  	width: 100%; 
-	border: 1px solid black;
 }
 .flickity-prev-next-button.previous, .flickity-prev-next-button.next {
 	display: none;
 }
+
+.flickity-page-dots {
+    bottom: 0px;
+	height: 50px;
+	left: 550px;
+}
+/* white circles */
+.flickity-page-dots .dot {
+	width: 15px;
+	height: 15px;
+	background-image: url(images/photoes/button.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+.flickity-page-dots .dot.is-selected {
+  	background: #fff;
+/*	background-image: url(images/photoes/button-act.png);*/
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+/*-------------------------------------------------------------*/
 
 #slider {
 	position: relative;
@@ -310,7 +332,7 @@ body,html{
 	display: flex; 
 	flex-direction: row-reverse;
 	margin: 5px;
-	border: 1px solid black;
+/*	border: 1px solid black;*/
 }
 
 
@@ -346,8 +368,6 @@ body,html{
 	margin: 30px;
 }
 
-
-
 .popup {
 	background: rgba(0, 0, 0, 0.6);
 	width: 100%;
@@ -355,9 +375,29 @@ body,html{
 	position: fixed;
 	top: 0;
 	display: none;
+/*	display: flex;*/
 	justify-content: center;
 	align-items: center;
 }
+
+/*-------------------------------------------------------------*/
+.popup .flickity-page-dots{
+	display: none;
+}
+
+.popup .flickity-prev-next-button.previous, .popup .flickity-prev-next-button.next {
+	display: block;
+}
+
+.popup .flickity-prev-next-button.previous {
+    left: -100px;
+	top: 150px;
+}
+.popup .flickity-prev-next-button.next {
+    right: -100px;
+	top: 150px;
+}
+/*-------------------------------------------------------------*/
 
 .popup_content {
 	height: 400px;
@@ -371,8 +411,10 @@ body,html{
 
 .popup_content img{
 	align-content: center;
-/*	max-height: 88%;*/
+/*	max-height: 80%;*/
 	max-height: 93%;
+	height: auto;
+	border: 6px solid black;
 }
 
 .popup_content p{
@@ -422,4 +464,8 @@ body,html{
 	background-size: 100% 100%;
 }
 
-
+.img {
+	background-image: url(images/photoes/full-photo.png);
+	padding: 175px 380px;
+	background-repeat: no-repeat;
+}
