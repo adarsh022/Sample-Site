@@ -284,7 +284,8 @@ body,html{
 .flickity-page-dots {
     bottom: 0px;
 	height: 50px;
-	left: 550px;
+/*	left: 550px;*/
+	left: 45%;
 }
 /* white circles */
 .flickity-page-dots .dot {
