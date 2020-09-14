@@ -36,7 +36,7 @@
 							<h2>Vidisse exquisitaque</h2>
 							<p style="margin: 0">ut anim malis quo pariatur ut anim malis quo pariatur</p>
 						</div>
-						<a class="button1">
+						<a class="button1" id="slid-btn">
 							<div style="float: left;margin:5px;">
 								Learn more
 							</div>
@@ -50,13 +50,13 @@
 
 			<div class="carousel-cell">
 		  		<div id="slider">
-					<img src="images/photoes/banner_slider_02.jpg">
+					<img src="images/photoes/banner_slider_02.png">
 					<div id="slider1">
 						<div id="slider2">
 							<h2>Vidisse exquisitaque</h2>
 							<p style="margin: 0">ut anim malis quo pariatur ut anim malis quo pariatur</p>
 						</div>
-						<a class="button1">
+						<a class="button1" id="slid-btn">
 							<div style="float: left;margin:5px;">
 								Learn more
 							</div>
@@ -76,7 +76,7 @@
 							<h2>Vidisse exquisitaque</h2>
 							<p style="margin: 0">ut anim malis quo pariatur ut anim malis quo pariatur</p>
 						</div>
-						<a class="button1">
+						<a class="button1" id="slid-btn">
 							<div style="float: left;margin:5px;">
 								Learn more
 							</div>
@@ -94,12 +94,7 @@
 			</div>
 			<div class="grid1">
 				<div id="grid1-1">
-					<p>Vidisse exquisitaque te deserunt, ubi sunt do irure, ut anim malis quo pariatur 
-					de do sint incididunt si incurreret do quibusdam, quid laborum consequat, qui 
-					malis qui summis sed aute appellat iis cupidatat. Senserit adipisicing est 
-					senserit, nescius relinqueret hic incididunt an labore nostrud si quorum ipsum, 
-					aut nam malis quae irure. Possumus est nulla, ipsum an se fugiat aliquip e eram 
-					fabulas</p>
+					<p>Vidisse exquisitaque te deserunt, ubi sunt do irure, ut anim malis quo pariaturde do sint incididunt si incurreret do quibusdam, quid laborum consequat, qui malis qui summis sed aute appellat iis cupidatat. Senserit adipisicing est senserit, nescius relinqueret hic incididunt an labore nostrud si quorum ipsum, aut nam malis quae irure. Possumus est nulla, ipsum an se fugiat aliquip e eram 		fabulas</p>
 					<a class="button1">
 						<div style="float: left;margin:5px;">
 							Learn more
@@ -159,14 +154,12 @@
 					<div class="grid6">
 						<p class="news">de offendit sempiternum de arbitror multos ipsum probant summis</p>
 						<p class="date">July 1,2011</p>
-						<p>Et summis sint e senserit ad quis ubi incididunt ad minim possumus efflorescere, 
-						de offendit sempiternum de arbitror multos ipsum probant summis, hic magna</p>
+						<p class="continue-reading">Et summis sint e senserit ad quis ubi incididunt ad minim possumus efflorescere, de offendit sempiternum de arbitror multos ipsum probant summis, hic magna</p>
 					</div>
 					<div class="grid6" style="border-top:1px solid rgb(224,224,224);">
 						<p class="news">de offendit sempiternum de arbitror multos ipsum probant summis</p>
 						<p class="date">June 30, 2011</p>
-						<p>Et summis sint e senserit ad quis ubi incididunt ad minim possumus efflorescere, 
-						de offendit sempiternum de arbitror multos ipsum probant summis, hic magna</p>
+						<p class="continue-reading">Et summis sint e senserit ad quis ubi incididunt ad minim possumus efflorescere, de offendit sempiternum de arbitror multos ipsum probant summis, hic magna</p>
 					</div>
 				</div>
 			</div>
@@ -180,7 +173,7 @@
 					<a id="pic3"><img src="images/photoes/photo-thumbnail.png"></a>
 					<a id="pic4"><img src="images/photoes/photo-thumbnail.png"></a>
 				</div>
-				<p>Et summis sint e senserit ad quis ubi incididunt ad minim possumus efflorescere, de offendit sempiternum de arbitror multos ipsum probant summis, hic magna</p>
+				<p class="continue-reading">Et summis sint e senserit ad quis ubi incididunt ad minim possumus efflorescere, de offendit sempiternum de arbitror multos ipsum probant summis, hic magna</p>
 			</div>
 			<div class="media1">
 				<h2>media resources-videos</h2>
@@ -191,7 +184,7 @@
 					<a id="vid4"><img src="images/photoes/video-thumbnail.png"></a>
 				</div>
 				<div>
-					<p>Et summis sint e senserit ad quis ubi incididunt ad minim possumus efflorescere,de offendit sempiternum de arbitror multos ipsum probant summis, hic magna</p> 
+					<p class="continue-reading">Et summis sint e senserit ad quis ubi incididunt ad minim possumus efflorescere,de offendit sempiternum de arbitror multos ipsum robant summis, hic magna</p> 
 				</div>
 			</div>
 		</div>
@@ -262,12 +255,66 @@
 			</div>
 		</div>
 	</div>
-	
-	<script type="text/javascript" src="javascript.js">
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function()
+	{
+	  var maxLength = 120;
+	  $(".continue-reading").each(function()
+	{
+		var myStr = $(this).text();
+		if($.trim(myStr).length > maxLength)
+	{
+		  var newStr = myStr.substring(0, maxLength);
+		  var removedStr = myStr.substring(maxLength, $.trim(myStr).length);
+		  $(this).empty().html(newStr);
+		  $(this).append(' <a href="javascript:void(0);" class="read-more" style="color:rgb(16,141,75);text-decoration: none;;">...continue reading</a>');
+		  $(this).append('<span class="more-text">' + removedStr + '</span>');
+		}
+	  });
+	  $(".read-more").click(function()
+	{
+		$(this).siblings(".more-text").contents().unwrap();
+		$(this).remove();
+	  });
+	});
+
+		//----------------------------------------------------------------
+	document.getElementById("pic1").addEventListener("click", function(){
+		document.querySelector("#popup1").style.display = "flex";
+	})
+	document.getElementById("pic2").addEventListener("click", function(){
+		document.querySelector("#popup1").style.display = "flex";
+	})
+	document.getElementById("pic3").addEventListener("click", function(){
+		document.querySelector("#popup1").style.display = "flex";
+	})
+	document.getElementById("pic4").addEventListener("click", function(){
+		document.querySelector("#popup1").style.display = "flex";
+	})
+
+	//----------------------------------------------------------------
+	document.getElementById("vid1").addEventListener("click", function(){
+		document.querySelector("#popup2").style.display = "flex";
+	})
+	document.getElementById("vid2").addEventListener("click", function(){
+		document.querySelector("#popup2").style.display = "flex";
+	})
+	document.getElementById("vid3").addEventListener("click", function(){
+		document.querySelector("#popup2").style.display = "flex";
+	})
+	document.getElementById("vid4").addEventListener("click", function(){
+		document.querySelector("#popup2").style.display = "flex";
+	})
+	//----------------------------------------------------------------
+	document.getElementById("close1").addEventListener("click", function(){
+		document.querySelector("#popup1").style.display = "none";
+	})
+	document.getElementById("close2").addEventListener("click", function(){
+		document.querySelector("#popup2").style.display = "none";
+	})
+	//-----------------------------------------------------------------
 	</script>
-	
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   	<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
-	
 </body>
 </html>
